@@ -7,6 +7,39 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
   <body>
+    <div class="container">
+      <h1>Waitstaff Calculator</h1>
+      
+      <section class="mealDetails">
+        <h2>Enter the Meal Details</h2>
+        <form class="form" name="mealForm" novalidate="">
+          <label for="price">Base Meal Price: $</label>
+          <input type="number" name="price" required />
+          <label for="taxRate">Tax Rate: %</label>
+          <input type="number" name="taxRate" required />
+          <label for="tips">Tip Percentage: %</label>
+          <input type="number" name="tips" required />
+          <input class="btn" type="submit" name="submitBtn" value="Submit"></input>
+        </form>
+        <button class="btn">Cancel</button>
+      </section>
+      
+      <section class="customer-charges right">
+        <h2>Customer Charges</h2>
+        <p>Subtotal <span>0.00</span></p>
+        <p>Tip <span>0.00</span></p>
+        <hr/>
+        <p>Total <span>0.00</span></p>
+      </section>
+
+      <section class="earnings-info right">
+        <h2>My Earnings Info</h2>
+        <p>Tip Total: <span>0.00</span></p>
+        <p>Meal Count: <span>0.00</span></p>
+        <p>Avg Tip Per Meal: <span>0.00</span></p>
+      </section>
+      <button class="btn">Reset</button>
+    </div>
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js"></script>
