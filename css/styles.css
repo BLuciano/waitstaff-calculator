@@ -14,8 +14,20 @@ html {
   padding: 0 1em;
 }
 
+.container:after{
+  content: "";
+  display: table;
+  clear: both;
+}
+
 h1, h2{
   text-align: center;
+}
+
+h2{
+  border-bottom: 2px solid #000033;
+  margin: 0;
+  padding: .5em 0;
 }
 
 .btn{
@@ -57,4 +69,43 @@ h1, h2{
 input.submitBtn{
   width: 75px;
   margin: 6em 1em 0 7em;
+}
+
+/*******CUSTOMER CHARGES/EANINGS SECTION*********/
+
+.customer-charges, .earnings-info{
+  float: right;
+  width: 45%;
+  height: 200px;
+  border: 2px solid #000033;
+}
+
+.customer-charges{
+  margin-bottom: 50px;
+}
+
+.customer-charges hr{
+  width: 45%;
+  margin-left: 4em;
+}
+
+.totals{
+  padding: 1em 2em;
+}
+
+.totals p{
+  display: inline-block;
+  margin: .5em 0;
+  width: 40%;
+  text-align: right;
+}
+
+.totals span{
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.reset{
+  display: block;
+  margin: 5em auto 0 auto;
 }
