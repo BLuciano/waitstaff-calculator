@@ -14,25 +14,26 @@
         <h2>Enter the Meal Details</h2>
         <form class="form" ng-submit="submit()" name="mealForm" novalidate>
           <label for="price">Base Meal Price: $</label>
-          <input type="number" ng-model="price" name="price" required /><br/>
+          <input type="number" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="price" name="price" required />
+          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
+            <span ng-message="required">*required</span>
+          </p>
+
           <label for="taxRate">Tax Rate: %</label>
-          <input class="small" ng-model="taxRate" type="number" name="taxRate" required /><br/>
+          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="taxRate" type="number" name="taxRate" required />
+          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
+            <span ng-message="required">*required</span>
+          </p>
+
           <label for="tips">Tip Percentage: %</label>
-          <input class="small" ng-model="tips" type="number" name="tips" required /><br/>
+          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="tips" type="number" name="tips" required />
+          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
+            <span ng-message="required">*required</span>
+          </p>
+
           <input class="btn submitBtn" type="submit" value="Submit"/>
           <button class="btn cancelBtn">Cancel</button>
         </form>
-
-        <div class="errors">
-          <p ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
-            <span ng-message="required">Please enter a meal price!</span>
-          </p>
-          <p ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
-            <span ng-message="required">Please enter a tax Rate!</span>
-          </p>
-          <p ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
-            <span ng-message="required">Please enter tips!</span>
-          </p>
       </section>
       
       <section class="customer-charges">

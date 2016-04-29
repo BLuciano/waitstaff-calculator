@@ -38,12 +38,6 @@ h2{
   width: 75px;
 }
 
-.errors{
-  color: red;
-  text-align: center;
-  margin-top: -1em;
-}
-
 /*******MEAL DETAILS SECTION************/
 
 .mealDetails{
@@ -68,8 +62,21 @@ h2{
   padding: .5em;
   margin: .5em;
 }
+
 .form .small{
   width: 20%;
+}
+
+.error{
+  color: red;
+  margin: 0;
+  margin-bottom: 1em;
+  font-size: .85em;
+  text-align: center;
+}
+
+input.submitted.ng-invalid{
+  border: 1px solid red;
 }
 
 input.submitBtn{
