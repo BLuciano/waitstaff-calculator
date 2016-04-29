@@ -1,45 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
   <head>
     <meta charset="UTF-8">
     <title>Waitstaff Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
-  <body>
+  <body ng-controller="myCtrl">
     <div class="container">
       <h1>Waitstaff Calculator</h1>
       
       <section class="mealDetails">
         <h2>Enter the Meal Details</h2>
-        <form class="form" name="mealForm" novalidate="">
+        <form class="form" ng-submit="submit()" name="mealForm" novalidate>
           <label for="price">Base Meal Price: $</label>
-          <input type="number" name="price" required /><br/>
+          <input type="number" ng-model="price" name="price" required /><br/>
           <label for="taxRate">Tax Rate: %</label>
-          <input class="small" type="number" name="taxRate" required /><br/>
+          <input class="small" ng-model="taxRate" type="number" name="taxRate" required /><br/>
           <label for="tips">Tip Percentage: %</label>
-          <input class="small" type="number" name="tips" required /><br/>
-          <input class="btn submitBtn" type="submit" name="submitBtn" value="Submit"></input>
+          <input class="small" ng-model="tips" type="number" name="tips" required /><br/>
+          <input class="btn submitBtn" type="submit" value="Submit"/>
           <button class="btn cancelBtn">Cancel</button>
         </form>
+
+        <div class="errors">
+          <p ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
+            <span ng-message="required">Please enter a meal price!</span>
+          </p>
+          <p ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
+            <span ng-message="required">Please enter a tax Rate!</span>
+          </p>
+          <p ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
+            <span ng-message="required">Please enter tips!</span>
+          </p>
       </section>
       
       <section class="customer-charges">
         <h2>Customer Charges</h2>
         <div class="totals">
-          <p>Subtotal </p><span>0.00</span><br/>
-          <p>Tip </p><span>0.00</span><br/>
+          <p>Subtotal </p><span>{{subTotal}}</span><br/>
+          <p>Tip </p><span>{{tip}}</span><br/>
           <hr/>
-          <p>Total </p><span>0.00</span><br/>
+          <p>Total </p><span>{{total}}</span><br/>
         </div>
       </section>
 
       <section class="earnings-info">
         <h2>My Earnings Info</h2>
         <div class="totals">
-          <p>Tip Total: </p><span>0.00</span><br/>
-          <p>Meal Count: </p><span>0.00</span><br/>
-          <p>Avg Tip Per Meal: </p><span>0.00</span><br/>
+          <p>Tip Total: </p><span>{{tipTotal}}</span><br/>
+          <p>Meal Count: </p><span>{{mealCount}}</span><br/>
+          <p>Avg Tip Per Meal: </p><span>{{avgTip}}</span><br/>
         </div>
       </section>
     </div>

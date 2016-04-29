@@ -38,6 +38,12 @@ h2{
   width: 75px;
 }
 
+.errors{
+  color: red;
+  text-align: center;
+  margin-top: -1em;
+}
+
 /*******MEAL DETAILS SECTION************/
 
 .mealDetails{
@@ -68,7 +74,7 @@ h2{
 
 input.submitBtn{
   width: 75px;
-  margin: 6em 1em 0 7em;
+  margin: 4em 1em 0 7em;
 }
 
 /*******CUSTOMER CHARGES/EANINGS SECTION*********/
