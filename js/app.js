@@ -1,13 +1,5 @@
 angular.module('myApp', ['ngMessages'])
   .controller('myCtrl', function($scope){
-    $scope.subTotal = 0.00;
-    $scope.tip = 0.00;
-    $scope.total = 0.00;
-    $scope.tipTotal = 0.00;
-    $scope.mealCount = 0;
-    $scope.avgTip = 0.00;
-    $scope.allMeals = [];
-
     //Resets input values, used when site first loads and 
     //after each successful form submission
     var setValues = function(){
@@ -17,7 +9,20 @@ angular.module('myApp', ['ngMessages'])
       $scope.formValid = false;  
     };
 
+    //Sets the values that get updated dynamically
+    //Used when page first loads and on button reset
+    var setInfoValues = function(){
+      $scope.subTotal = 0.00;
+      $scope.tip = 0.00;
+      $scope.total = 0.00;
+      $scope.tipTotal = 0.00;
+      $scope.mealCount = 0;
+      $scope.avgTip = 0.00;
+      $scope.allMeals = [];
+    };
+
     setValues();
+    setInfoValues();
 
     //Form submission logic
     $scope.submit = function(){
@@ -36,5 +41,13 @@ angular.module('myApp', ['ngMessages'])
         $scope.mealForm.$setPristine();
         setValues();
       }
+    };
+
+    //Resets all data and input fields
+    //and puts page back to initial state
+    $scope.reset = function(){
+      $scope.mealForm.$setPristine();
+      setValues();
+      setInfoValues();
     };
   });
