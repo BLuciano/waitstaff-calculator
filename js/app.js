@@ -6,7 +6,7 @@ angular.module('myApp', ['ngMessages'])
       $scope.price = '';
       $scope.taxRate = '';
       $scope.tips = '';
-      $scope.formValid = false;  
+      $scope.formValid = false;
     };
 
     //Sets the values that get updated dynamically
@@ -49,5 +49,10 @@ angular.module('myApp', ['ngMessages'])
       $scope.mealForm.$setPristine();
       setValues();
       setInfoValues();
+    };
+
+    $scope.cancel = function(){
+      $scope.mealForm.$setPristine();
+      setValues();
     };
   });
