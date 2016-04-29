@@ -14,17 +14,17 @@
         <h2>Enter the Meal Details</h2>
         <form class="form" name="mealForm" novalidate="">
           <label for="price">Base Meal Price: $</label>
-          <input type="number" name="price" required />
+          <input type="number" name="price" required /><br/>
           <label for="taxRate">Tax Rate: %</label>
-          <input type="number" name="taxRate" required />
+          <input class="small" type="number" name="taxRate" required /><br/>
           <label for="tips">Tip Percentage: %</label>
-          <input type="number" name="tips" required />
-          <input class="btn" type="submit" name="submitBtn" value="Submit"></input>
+          <input class="small" type="number" name="tips" required /><br/>
+          <input class="btn submitBtn" type="submit" name="submitBtn" value="Submit"></input>
+          <button class="btn cancelBtn">Cancel</button>
         </form>
-        <button class="btn">Cancel</button>
       </section>
       
-      <section class="customer-charges right">
+      <section class="customer-charges">
         <h2>Customer Charges</h2>
         <p>Subtotal <span>0.00</span></p>
         <p>Tip <span>0.00</span></p>
@@ -32,7 +32,7 @@
         <p>Total <span>0.00</span></p>
       </section>
 
-      <section class="earnings-info right">
+      <section class="earnings-info">
         <h2>My Earnings Info</h2>
         <p>Tip Total: <span>0.00</span></p>
         <p>Meal Count: <span>0.00</span></p>

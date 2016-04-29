@@ -1,0 +1,60 @@
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.container{
+  width: 900px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+h1, h2{
+  text-align: center;
+}
+
+.btn{
+  border: none;
+  background-color: #000033;
+  color: #fff;
+  padding: .5em;
+  width: 75px;
+}
+
+/*******MEAL DETAILS SECTION************/
+
+.mealDetails{
+  width: 45%;
+  float: left;
+  height: 450px;
+  border: 2px solid #000033;
+}
+
+.form{
+  padding: 2em 1em;
+}
+
+.form label{
+  display: inline-block;
+  width: 40%;
+  text-align: right;
+}
+
+.form input{
+  width: 40%;
+  padding: .5em;
+  margin: .5em;
+}
+.form .small{
+  width: 20%;
+}
+
+input.submitBtn{
+  width: 75px;
+  margin: 6em 1em 0 7em;
+}
