@@ -75,6 +75,13 @@ h2{
   text-align: center;
 }
 
+.cancelBtn{
+  position: relative;
+  left: 15em;
+  top: -4.6em;
+  padding: .55em;
+}
+
 input.submitted.ng-invalid{
   border: 1px solid red;
 }
