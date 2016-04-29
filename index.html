@@ -14,21 +14,27 @@
         <h2>Enter the Meal Details</h2>
         <form class="form" ng-submit="submit()" name="mealForm" novalidate>
           <label for="price">Base Meal Price: $</label>
-          <input type="number" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="price" name="price" required />
+          <input type="number" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="price" min="0" name="price" required />
           <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
             <span ng-message="required">*required</span>
+            <span ng-message="min">Enter a positive number!</span>
+            <span ng-message="number">Enter a positive number!</span>
           </p>
 
           <label for="taxRate">Tax Rate: %</label>
-          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="taxRate" type="number" name="taxRate" required />
+          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="taxRate" min="0" type="number" name="taxRate" required />
           <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
             <span ng-message="required">*required</span>
+            <span ng-message="min">Enter a positive number!</span>
+            <span ng-message="number">Enter a positive number!</span>
           </p>
 
           <label for="tips">Tip Percentage: %</label>
-          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="tips" type="number" name="tips" required />
+          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="tips" min="0" type="number" name="tips" required />
           <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
             <span ng-message="required">*required</span>
+            <span ng-message="min">Enter a positive number!</span>
+            <span ng-message="number">Enter a positive number!</span>
           </p>
 
           <input class="btn submitBtn" type="submit" value="Submit"/>
@@ -39,19 +45,19 @@
       <section class="customer-charges">
         <h2>Customer Charges</h2>
         <div class="totals">
-          <p>Subtotal </p><span>{{subTotal}}</span><br/>
-          <p>Tip </p><span>{{tip}}</span><br/>
+          <p>Subtotal </p><span>{{subTotal | number: 2}}</span><br/>
+          <p>Tip </p><span>{{tip | number: 2}}</span><br/>
           <hr/>
-          <p>Total </p><span>{{total}}</span><br/>
+          <p>Total </p><span>{{total | number: 2}}</span><br/>
         </div>
       </section>
 
       <section class="earnings-info">
         <h2>My Earnings Info</h2>
         <div class="totals">
-          <p>Tip Total: </p><span>{{tipTotal}}</span><br/>
-          <p>Meal Count: </p><span>{{mealCount}}</span><br/>
-          <p>Avg Tip Per Meal: </p><span>{{avgTip}}</span><br/>
+          <p>Tip Total: </p><span>{{tipTotal | number: 2}}</span><br/>
+          <p>Meal Count: </p><span>{{mealCount | number: 2}}</span><br/>
+          <p>Avg Tip Per Meal: </p><span>{{avgTip | number: 2}}</span><br/>
         </div>
       </section>
     </div>

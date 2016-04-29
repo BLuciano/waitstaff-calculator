@@ -27,7 +27,8 @@ angular.module('myApp', ['ngMessages'])
     //Form submission logic
     $scope.submit = function(){
       //Checks to see if form is valid
-      if(!$scope.mealForm.$error.required){
+      if(!$scope.mealForm.$error.required && !$scope.mealForm.$error.min 
+          && !$scope.mealForm.$error.number){
         $scope.formValid = true;
       }
       //If form is valid calculate charges
