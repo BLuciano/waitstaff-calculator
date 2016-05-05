@@ -1,0 +1,41 @@
+<section class="mealDetails">
+  <h2>Enter the Meal Details</h2>
+  <form class="form" ng-submit="submit()" ng-model="mealForm" name="mealForm" novalidate>
+    <label for="price">Base Meal Price: $</label>
+    <input type="number" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.price" min="0" name="price" required />
+    <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
+      <span ng-message="required">*required</span>
+      <span ng-message="min">Enter a positive number!</span>
+      <span ng-message="number">Enter a positive number!</span>
+    </p>
+
+    <label for="taxRate">Tax Rate: %</label>
+    <input class="small" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.taxRate" min="0" type="number" name="taxRate" required />
+    <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
+      <span ng-message="required">*required</span>
+      <span ng-message="min">Enter a positive number!</span>
+      <span ng-message="number">Enter a positive number!</span>
+    </p>
+
+    <label for="tips">Tip Percentage: %</label>
+    <input class="small" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.tips" min="0" type="number" name="tips" required />
+    <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
+      <span ng-message="required">*required</span>
+      <span ng-message="min">Enter a positive number!</span>
+      <span ng-message="number">Enter a positive number!</span>
+    </p>
+
+    <input class="btn submitBtn" type="submit" value="Submit"/>
+  </form>
+  <button class="btn cancelBtn" ng-click="cancel()">Cancel</button>
+</section>
+    
+<section class="customer-charges">
+  <h2>Customer Charges</h2>
+  <div class="totals">
+    <p>Subtotal </p><span>{{values.subTotal | number: 2}}</span><br/>
+    <p>Tip </p><span>{{values.tip | number: 2}}</span><br/>
+    <hr/>
+    <p>Total </p><span>{{values.total | number: 2}}</span><br/>
+  </div>
+</section>
