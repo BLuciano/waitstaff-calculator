@@ -6,65 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
   </head>
-  <body ng-controller="myCtrl">
-    <div class="container">
-      <h1>Waitstaff Calculator</h1>
-      
-      <section class="mealDetails">
-        <h2>Enter the Meal Details</h2>
-        <form class="form" ng-submit="submit()" name="mealForm" novalidate>
-          <label for="price">Base Meal Price: $</label>
-          <input type="number" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="price" min="0" name="price" required />
-          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
-            <span ng-message="required">*required</span>
-            <span ng-message="min">Enter a positive number!</span>
-            <span ng-message="number">Enter a positive number!</span>
-          </p>
-
-          <label for="taxRate">Tax Rate: %</label>
-          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="taxRate" min="0" type="number" name="taxRate" required />
-          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
-            <span ng-message="required">*required</span>
-            <span ng-message="min">Enter a positive number!</span>
-            <span ng-message="number">Enter a positive number!</span>
-          </p>
-
-          <label for="tips">Tip Percentage: %</label>
-          <input class="small" ng-class="{submitted : !formValid && mealForm.$submitted}" ng-model="tips" min="0" type="number" name="tips" required />
-          <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
-            <span ng-message="required">*required</span>
-            <span ng-message="min">Enter a positive number!</span>
-            <span ng-message="number">Enter a positive number!</span>
-          </p>
-
-          <input class="btn submitBtn" type="submit" value="Submit"/>
-        </form>
-        <button class="btn cancelBtn" ng-click="cancel()">Cancel</button>
-      </section>
-      
-      <section class="customer-charges">
-        <h2>Customer Charges</h2>
-        <div class="totals">
-          <p>Subtotal </p><span>{{subTotal | number: 2}}</span><br/>
-          <p>Tip </p><span>{{tip | number: 2}}</span><br/>
-          <hr/>
-          <p>Total </p><span>{{total | number: 2}}</span><br/>
+  <body>
+    <div class="container" ng-controller="mainCtrl">
+      <header class="mainHdr">
+        <h1>Waitstaff Calculator</h1>
+        <div class="links">
+          <a ng-href="#/home">Home</a> |
+          <a ng-href="#/meals">New Meal</a> |
+          <a ng-href="#/earnings">My Earnings</a>
         </div>
-      </section>
-
-      <section class="earnings-info">
-        <h2>My Earnings Info</h2>
-        <div class="totals">
-          <p>Tip Total: </p><span>{{tipTotal | number: 2}}</span><br/>
-          <p>Meal Count: </p><span>{{mealCount | number: 2}}</span><br/>
-          <p>Avg Tip Per Meal: </p><span>{{avgTip | number: 2}}</span><br/>
-        </div>
-      </section>
+      </header>
+      
+      <div ng-view></div>
+    
     </div>
-    <button class="btn reset" ng-click="reset()">Reset</button>
-
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>

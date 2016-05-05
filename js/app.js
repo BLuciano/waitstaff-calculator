@@ -1,59 +1,85 @@
-angular.module('myApp', ['ngMessages'])
-  .controller('myCtrl', function($scope){
-    //Resets input values, used when site first loads and 
-    //after each successful form submission
-    var setValues = function(){
-      $scope.price = '';
-      $scope.taxRate = '';
-      $scope.tips = '';
-      $scope.formValid = false;
+angular.module('myApp', ['ngMessages', 'ngRoute'])
+  .run(function($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function() {
+        $location.path('/error');
+    });
+  })
+  .config(['$routeProvider', function($routeProvider){
+    $routeProvider.when('/', {
+      templateUrl : 'views/home.html'
+    }).when('/meals', {
+      templateUrl : 'views/meals.html',
+      controller : 'mealCtrl'
+    }).when('/earnings', {
+      templateUrl : 'views/earnings.html',
+      controller : 'earningCtrl'
+    }).when('/error', {
+      template : '<p>Error - Page Not Found</p>'
+    })
+    .otherwise('/');
+  }])
+  .controller('mainCtrl', function($rootScope, $scope){
+    $rootScope.values = {};
+    //Sets the values that get updated dynamically
+    //Used when page first loads and on button reset
+    $rootScope.setValues = function(){
+      $rootScope.values.price = '';
+      $rootScope.values.taxRate = '';
+      $rootScope.values.tips = '';
+      $rootScope.values.formValid = false;
     };
 
     //Sets the values that get updated dynamically
     //Used when page first loads and on button reset
-    var setInfoValues = function(){
-      $scope.subTotal = 0.00;
-      $scope.tip = 0.00;
-      $scope.total = 0.00;
-      $scope.tipTotal = 0.00;
-      $scope.mealCount = 0;
-      $scope.avgTip = 0.00;
-      $scope.allMeals = [];
+    $rootScope.setInfoValues = function(){
+      $rootScope.values.subTotal = 0.00;
+      $rootScope.values.tip = 0.00;
+      $rootScope.values.total = 0.00;
+      $rootScope.values.tipTotal = 0.00;
+      $rootScope.values.mealCount = 0;
+      $rootScope.values.avgTip = 0.00;
+      $rootScope.values.allMeals = [];
     };
-
-    setValues();
-    setInfoValues();
-
-    //Form submission logic
+    $rootScope.setValues();
+    $rootScope.setInfoValues();
+  })
+  .controller('mealCtrl', function($rootScope, $scope){
+    //Form submission logic. Checks to see if form is valid
+    //If form is valid calculate charges
     $scope.submit = function(){
-      //Checks to see if form is valid
       if(!$scope.mealForm.$error.required && !$scope.mealForm.$error.min 
           && !$scope.mealForm.$error.number){
-        $scope.formValid = true;
+        $rootScope.values.formValid = true;
       }
-      //If form is valid calculate charges
-      if($scope.formValid){
-        $scope.subTotal = $scope.price + (($scope.price * $scope.taxRate) / 100);
-        $scope.tip = ($scope.price * $scope.tips) / 100;
-        $scope.total = $scope.subTotal + $scope.tip;
-        $scope.tipTotal = $scope.tipTotal + $scope.tip;
-        $scope.mealCount++;
-        $scope.avgTip = $scope.tipTotal / $scope.mealCount;
-        $scope.mealForm.$setPristine();
-        setValues();
+      if($rootScope.values.formValid){
+        $rootScope.values.subTotal = $rootScope.values.price + (($rootScope.values.price * $rootScope.values.taxRate) / 100);
+        $rootScope.values.tip = ($rootScope.values.price * $rootScope.values.tips) / 100;
+        $rootScope.values.total = $rootScope.values.subTotal + $rootScope.values.tip;
+        $rootScope.values.tipTotal = $rootScope.values.tipTotal + $rootScope.values.tip;
+        $rootScope.values.mealCount++;
+        $rootScope.values.avgTip = $rootScope.values.tipTotal / $rootScope.values.mealCount;
+        
+        $rootScope.pristine();
+        $rootScope.setValues();
       }
     };
 
+    //Clears the form of any user input
+    $scope.cancel = function(){
+      $rootScope.pristine();
+      $rootScope.setValues();
+    };
+
+    //Sets the form to pristine state
+    $rootScope.pristine = function(){
+      $scope.mealForm.$setPristine();
+    };
+  })
+  .controller('earningCtrl', function($rootScope, $scope){
     //Resets all data and input fields
     //and puts page back to initial state
     $scope.reset = function(){
-      $scope.mealForm.$setPristine();
-      setValues();
-      setInfoValues();
-    };
-
-    $scope.cancel = function(){
-      $scope.mealForm.$setPristine();
-      setValues();
+      $rootScope.setValues();
+      $rootScope.setInfoValues(); 
     };
   });
