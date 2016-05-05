@@ -30,20 +30,53 @@ h2{
   padding: .5em 0;
 }
 
+a{
+  text-decoration: none;
+}
+
 .btn{
   border: none;
   background-color: #000033;
   color: #fff;
   padding: .5em;
   width: 75px;
+  -webkit-transition: all .25s;
+  transition: all .25s;
 }
+
+.btn:hover{
+  background-color: #004080;
+  cursor: pointer;
+}
+
+/***************HEADER*****************/
+.mainHdr{
+  text-align: center;
+  margin: 0 auto;
+}
+
+.links{
+  margin: 3em 0;
+}
+
+.links a:hover{
+  color: #004080;
+}
+
+.links a{
+  font-size: 1.15em;
+  margin: 0 1em;
+  color: #000033;
+  font-weight: 800;
+}
+
 
 /*******MEAL DETAILS SECTION************/
 
 .mealDetails{
-  width: 45%;
-  float: left;
-  height: 450px;
+  width: 385px;
+  margin: 0 auto 2em auto;
+  height: 350px;
   border: 2px solid #000033;
 }
 
@@ -88,16 +121,16 @@ input.submitted.ng-invalid{
 
 input.submitBtn{
   width: 75px;
-  margin: 4em 1em 0 7em;
+  margin: 3em 1em 0 7em;
 }
 
 /*******CUSTOMER CHARGES/EANINGS SECTION*********/
 
 .customer-charges, .earnings-info{
-  float: right;
-  width: 45%;
+  width: 385px;
   height: 200px;
   border: 2px solid #000033;
+  margin: 0 auto;
 }
 
 .customer-charges{
