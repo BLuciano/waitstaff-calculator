@@ -71,6 +71,13 @@ a{
 }
 
 
+/******************HOME****************/
+.home{
+  width: 385px;
+  margin: 0 auto;
+}
+
+
 /*******MEAL DETAILS SECTION************/
 
 .mealDetails{
@@ -161,4 +168,21 @@ input.submitBtn{
 .reset{
   display: block;
   margin: 5em auto 0 auto;
+}
+
+
+/************ANIMATIONS*****************/
+.view.ng-enter,
+.view.ng-leave.ng-leave-active { 
+  opacity: 0;
+  margin-right: 100%;
+  -webkit-transition: .5s linear all;
+  transition: .5s linear all;
+}
+.view.ng-leave,
+.view.ng-enter.ng-enter-active { 
+  opacity:1;
+  margin-right: 0;
+  -webkit-transition: .5s linear all .7s;
+  transition: .5s linear all .7s;
 }
