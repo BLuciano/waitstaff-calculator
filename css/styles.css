@@ -34,21 +34,6 @@ a{
   text-decoration: none;
 }
 
-.btn{
-  border: none;
-  background-color: #000033;
-  color: #fff;
-  padding: .5em;
-  width: 75px;
-  -webkit-transition: all .25s;
-  transition: all .25s;
-}
-
-.btn:hover{
-  background-color: #004080;
-  cursor: pointer;
-}
-
 /***************HEADER*****************/
 .mainHdr{
   text-align: center;
@@ -115,20 +100,8 @@ a{
   text-align: center;
 }
 
-.cancelBtn{
-  position: relative;
-  left: 15em;
-  top: -4.6em;
-  padding: .55em;
-}
-
-input.submitted.ng-invalid{
+form.submitted .ng-invalid{
   border: 1px solid red;
-}
-
-input.submitBtn{
-  width: 75px;
-  margin: 3em 1em 0 7em;
 }
 
 /*******CUSTOMER CHARGES/EANINGS SECTION*********/
@@ -185,4 +158,24 @@ input.submitBtn{
   margin-right: 0;
   -webkit-transition: .5s linear all .7s;
   transition: .5s linear all .7s;
+}
+
+/***************Buttons**************/
+.btn, input.btn{
+  border: none;
+  background-color: #000033;
+  color: #fff;
+  padding: .5em;
+  width: 75px;
+  -webkit-transition: all .25s;
+  transition: all .25s;
+}
+
+.btn:hover, input.btn:hover{
+  background-color: #004080;
+  cursor: pointer;
+}
+
+input.submitBtn{
+  margin: 3em 1em 0 7em;
 }

@@ -62,20 +62,15 @@ angular.module('myApp', ['ngMessages', 'ngRoute', 'ngAnimate'])
         $rootScope.values.mealCount++;
         $rootScope.values.avgTip = $rootScope.values.tipTotal / $rootScope.values.mealCount;
         
-        $rootScope.pristine();
+        $scope.mealForm.$setPristine();
         $rootScope.setValues();
       }
     };
 
     //Clears the form of any user input
     $scope.cancel = function(){
-      $rootScope.pristine();
-      $rootScope.setValues();
-    };
-
-    //Sets the form to pristine state
-    $rootScope.pristine = function(){
       $scope.mealForm.$setPristine();
+      $rootScope.setValues();
     };
   })
   .controller('earningCtrl', function($rootScope, $scope){

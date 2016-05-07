@@ -1,8 +1,8 @@
 <section class="mealDetails">
   <h2>Enter the Meal Details</h2>
-  <form class="form" ng-submit="submit()" ng-model="mealForm" name="mealForm" novalidate>
+  <form class="form" ng-submit="submit()" name="mealForm" ng-class="{submitted : !values.formValid && mealForm.$submitted}" novalidate>
     <label for="price">Base Meal Price: $</label>
-    <input type="number" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.price" min="0" name="price" required />
+    <input type="number"  ng-model="values.price" min="0" name="price" required />
     <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.price.$error">
       <span ng-message="required">*required</span>
       <span ng-message="min">Enter a positive number!</span>
@@ -10,7 +10,7 @@
     </p>
 
     <label for="taxRate">Tax Rate: %</label>
-    <input class="small" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.taxRate" min="0" type="number" name="taxRate" required />
+    <input class="small" ng-model="values.taxRate" min="0" type="number" name="taxRate" required />
     <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.taxRate.$error">
       <span ng-message="required">*required</span>
       <span ng-message="min">Enter a positive number!</span>
@@ -18,16 +18,15 @@
     </p>
 
     <label for="tips">Tip Percentage: %</label>
-    <input class="small" ng-class="{submitted : !values.formValid && mealForm.$submitted}" ng-model="values.tips" min="0" type="number" name="tips" required />
+    <input class="small" ng-model="values.tips" min="0" type="number" name="tips" required />
     <p class="error" ng-if="mealForm.$submitted" ng-messages="mealForm.tips.$error">
       <span ng-message="required">*required</span>
       <span ng-message="min">Enter a positive number!</span>
       <span ng-message="number">Enter a positive number!</span>
     </p>
-
     <input class="btn submitBtn" type="submit" value="Submit"/>
+    <input type="button" class="btn cancelBtn" value="Cancel" ng-click="cancel()"/>
   </form>
-  <button class="btn cancelBtn" ng-click="cancel()">Cancel</button>
 </section>
     
 <section class="customer-charges">
